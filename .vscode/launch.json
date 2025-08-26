@@ -1,0 +1,57 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "🌟 Launch All Agents",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/launch_all_agents.py",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}"
+      },
+      "justMyCode": false,
+      "stopOnEntry": false
+    },
+    {
+      "name": "🔮 Veritas Agent",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/Agents/Veritas_Agent/__main__.py",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}/Agents/Veritas_Agent",
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}:${workspaceFolder}/Agents/Veritas_Agent"
+      },
+      "justMyCode": false
+    },
+    {
+      "name": "⚙️ Mechanics Agent",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/Agents/Mechanics_Agent/__main__.py",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}/Agents/Mechanics_Agent",
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}:${workspaceFolder}/Agents/Mechanics_Agent"
+      },
+      "justMyCode": false
+    }
+  ],
+  "compounds": [
+    {
+      "name": "🚀 All Agents (Parallel)",
+      "configurations": [
+        "🔮 Veritas Agent",
+        "⚙️ Mechanics Agent"
+      ],
+      "stopAll": true,
+      "presentation": {
+        "hidden": false,
+        "group": "agents",
+        "order": 1
+      }
+    }
+  ]
+}

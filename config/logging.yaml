@@ -1,0 +1,81 @@
+version: 1
+disable_existing_loggers: False
+
+formatters:
+  simple:
+    format: '%(asctime)s -%(levelname)s: %(message)s'
+  detailed:
+    format: '%(asctime)s - %(levelname)s - %(filename)s - %(lineno)d - %(module)s: %(message)s'
+  colored:
+    '()': 'colorlog.ColoredFormatter'
+    format: '%(log_color)s%(asctime)s - %(levelname)s%(reset)s: %(message)s'
+    datefmt: '%Y-%m-%d %H:%M:%S'
+    log_colors:
+      DEBUG:    'cyan'
+      INFO:     'green'
+      WARNING:  'yellow'
+      ERROR:    'red'
+      CRITICAL: 'red,bg_white'
+  agent_display:
+    format: '%(message)s'
+  context:
+    format: '%(asctime)s | CONTEXT | %(levelname)s | %(message)s'
+    datefmt: '%H:%M:%S'
+
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: INFO
+    formatter: colored
+    stream: ext://sys.stdout
+
+  file:
+    class: logging.FileHandler
+    level: DEBUG
+    formatter: detailed
+    filename: logs/app.log
+    encoding: utf8
+
+  agent_console:
+    class: logging.StreamHandler
+    level: INFO
+    formatter: agent_display
+    stream: ext://sys.stdout
+
+  context_console:
+    class: logging.StreamHandler
+    level: DEBUG
+    formatter: context
+    stream: ext://sys.stdout
+
+  context_file:
+    class: logging.FileHandler
+    level: DEBUG
+    formatter: context
+    filename: logs/context.log
+    encoding: utf8
+
+loggers:
+  my_project:
+    level: DEBUG
+    handlers: [console, file]
+    propagate: no
+  
+  agent:
+    level: INFO
+    handlers: [agent_console, file]
+    propagate: no
+    
+  agent_executor:
+    level: INFO
+    handlers: [console, file]
+    propagate: no
+    
+  context_passing:
+    level: DEBUG
+    handlers: [context_console, context_file]
+    propagate: no
+
+root:
+  level: INFO
+  handlers: [console, file]
