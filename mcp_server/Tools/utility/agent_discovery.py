@@ -110,15 +110,21 @@ class A2AAgentDiscovery:
         message_text = request_data.get("task", request_data.get("user_query", ""))
         payload = {
             "id": str(uuid.uuid4()),
-            "method": "agent/send",
+            "method": "message/send",
             "params": {
+                "metadata": {
+                    "server_id": "server",
+                    "user_id": "user",
+                    "session_id": "default_session"
+                },
                 "message": {
                     "messageId": str(uuid.uuid4()),
                     "role": "user",
-                    "parts": [{"text": message_text}]
-                },
-                "user_id": "user",
-                "session_id": "default_session"
+                    "parts": [{
+                        "type": "text",
+                        "text": message_text
+                    }]
+                }
             }
         }
                 
