@@ -121,7 +121,7 @@ class AgentDisplayFormatter:
         """
         return error
 
-class AgentLogger:
+class  AgentLogger:
     """Enhanced logger for agent execution with structured output."""
     
     def __init__(self, agent_name: str):
@@ -142,7 +142,7 @@ class AgentLogger:
         step = self.formatter.format_step(step_type, content, details)
         self.logger.info(step)
         
-    def log_tool_call(self, tool_name: str, parameters: Dict):
+    def log_tool_call(self, tool_name: str, parameters: Dict = None):
         """Log tool call."""
         content = f"Calling tool: {tool_name}"
         details = {"parameters": parameters}

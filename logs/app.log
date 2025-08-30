@@ -1,156 +1,109 @@
-2025-08-24 14:52:10,517 - INFO - agent_executor.py - 22 - agent_executor: Initializing AgentExecutor
-2025-08-24 14:52:15,249 - INFO - agent_executor.py - 28 - agent_executor: Context!: I want to create the character asuna
-2025-08-24 14:52:15,936 - INFO - google_llm.py - 111 - google_llm: Sending out request, model: gemini-2.0-flash, backend: GoogleLLMVariant.GEMINI_API, stream: False
-2025-08-24 14:52:16,725 - INFO - google_llm.py - 203 - google_llm: Response received from the model.
-2025-08-24 14:52:16,726 - WARNING - types.py - 5176 - types: Warning: there are non-text parts in the response: ['function_call'], returning concatenated text result from text parts. Check the full candidates.content.parts accessor to get the full model response.
-2025-08-24 14:52:16,729 - WARNING - _function_parameter_parse_util.py - 67 - _function_parameter_parse_util: Default value is not supported in function declaration schema for Google AI.
-2025-08-24 14:52:17,345 - INFO - google_llm.py - 111 - google_llm: Sending out request, model: gemini-2.0-flash, backend: GoogleLLMVariant.GEMINI_API, stream: False
-2025-08-24 14:52:18,235 - INFO - google_llm.py - 203 - google_llm: Response received from the model.
-2025-08-24 14:52:18,235 - WARNING - types.py - 5176 - types: Warning: there are non-text parts in the response: ['function_call'], returning concatenated text result from text parts. Check the full candidates.content.parts accessor to get the full model response.
-2025-08-24 14:52:18,236 - INFO - agent_discovery.py - 28 - agent_discovery: Discovering A2A agents...
-2025-08-24 14:52:20,547 - ERROR - agent_discovery.py - 62 - agent_discovery: Error checking port 9996: Cannot connect to host localhost:9996 ssl:default [The remote computer refused the network connection]
-2025-08-24 14:52:22,875 - ERROR - agent_discovery.py - 62 - agent_discovery: Error checking port 9997: Cannot connect to host localhost:9997 ssl:default [The remote computer refused the network connection]
-2025-08-24 14:52:23,403 - WARNING - _function_parameter_parse_util.py - 67 - _function_parameter_parse_util: Default value is not supported in function declaration schema for Google AI.
-2025-08-24 14:52:23,999 - INFO - google_llm.py - 111 - google_llm: Sending out request, model: gemini-2.0-flash, backend: GoogleLLMVariant.GEMINI_API, stream: False
-2025-08-24 14:52:24,815 - INFO - google_llm.py - 203 - google_llm: Response received from the model.
-2025-08-24 14:52:24,816 - WARNING - types.py - 5176 - types: Warning: there are non-text parts in the response: ['function_call'], returning concatenated text result from text parts. Check the full candidates.content.parts accessor to get the full model response.
-2025-08-24 14:52:25,407 - INFO - google_llm.py - 111 - google_llm: Sending out request, model: gemini-2.0-flash, backend: GoogleLLMVariant.GEMINI_API, stream: False
-2025-08-24 14:52:26,285 - INFO - google_llm.py - 203 - google_llm: Response received from the model.
-2025-08-24 15:33:43,405 - INFO - agent_executor.py - 28 - agent_executor: Context!: I want to create the character asuna
-2025-08-24 15:33:43,937 - INFO - google_llm.py - 111 - google_llm: Sending out request, model: gemini-2.0-flash, backend: GoogleLLMVariant.GEMINI_API, stream: False
-2025-08-24 15:33:44,850 - INFO - google_llm.py - 203 - google_llm: Response received from the model.
-2025-08-24 15:33:44,851 - WARNING - types.py - 5176 - types: Warning: there are non-text parts in the response: ['function_call'], returning concatenated text result from text parts. Check the full candidates.content.parts accessor to get the full model response.
-2025-08-24 15:33:44,856 - WARNING - _function_parameter_parse_util.py - 67 - _function_parameter_parse_util: Default value is not supported in function declaration schema for Google AI.
-2025-08-24 15:33:45,366 - INFO - google_llm.py - 111 - google_llm: Sending out request, model: gemini-2.0-flash, backend: GoogleLLMVariant.GEMINI_API, stream: False
-2025-08-24 15:33:46,114 - INFO - google_llm.py - 203 - google_llm: Response received from the model.
-2025-08-24 15:33:46,114 - WARNING - types.py - 5176 - types: Warning: there are non-text parts in the response: ['function_call'], returning concatenated text result from text parts. Check the full candidates.content.parts accessor to get the full model response.
-2025-08-24 15:33:46,116 - INFO - agent_discovery.py - 28 - agent_discovery: Discovering A2A agents...
-2025-08-24 15:33:48,424 - ERROR - agent_discovery.py - 62 - agent_discovery: Error checking port 9996: Cannot connect to host localhost:9996 ssl:default [The remote computer refused the network connection]
-2025-08-24 15:33:50,732 - ERROR - agent_discovery.py - 62 - agent_discovery: Error checking port 9997: Cannot connect to host localhost:9997 ssl:default [The remote computer refused the network connection]
-2025-08-24 15:33:51,285 - WARNING - _function_parameter_parse_util.py - 67 - _function_parameter_parse_util: Default value is not supported in function declaration schema for Google AI.
-2025-08-24 15:33:51,792 - INFO - google_llm.py - 111 - google_llm: Sending out request, model: gemini-2.0-flash, backend: GoogleLLMVariant.GEMINI_API, stream: False
-2025-08-24 15:33:52,553 - INFO - google_llm.py - 203 - google_llm: Response received from the model.
-2025-08-24 15:33:52,553 - WARNING - types.py - 5176 - types: Warning: there are non-text parts in the response: ['function_call'], returning concatenated text result from text parts. Check the full candidates.content.parts accessor to get the full model response.
-2025-08-24 15:33:53,069 - INFO - google_llm.py - 111 - google_llm: Sending out request, model: gemini-2.0-flash, backend: GoogleLLMVariant.GEMINI_API, stream: False
-2025-08-24 15:33:54,114 - INFO - google_llm.py - 203 - google_llm: Response received from the model.
-2025-08-24 15:34:12,431 - INFO - agent_executor.py - 28 - agent_executor: Context!: I want to create the character asuna
-2025-08-24 15:36:05,838 - INFO - google_llm.py - 111 - google_llm: Sending out request, model: gemini-2.0-flash, backend: GoogleLLMVariant.GEMINI_API, stream: False
-2025-08-24 15:36:06,557 - INFO - google_llm.py - 203 - google_llm: Response received from the model.
-2025-08-24 15:36:06,558 - WARNING - types.py - 5176 - types: Warning: there are non-text parts in the response: ['function_call'], returning concatenated text result from text parts. Check the full candidates.content.parts accessor to get the full model response.
-2025-08-24 15:36:06,560 - WARNING - _function_parameter_parse_util.py - 67 - _function_parameter_parse_util: Default value is not supported in function declaration schema for Google AI.
-2025-08-24 15:36:07,063 - INFO - google_llm.py - 111 - google_llm: Sending out request, model: gemini-2.0-flash, backend: GoogleLLMVariant.GEMINI_API, stream: False
-2025-08-24 15:36:07,830 - INFO - google_llm.py - 203 - google_llm: Response received from the model.
-2025-08-24 15:36:07,831 - WARNING - types.py - 5176 - types: Warning: there are non-text parts in the response: ['function_call'], returning concatenated text result from text parts. Check the full candidates.content.parts accessor to get the full model response.
-2025-08-24 15:36:07,832 - INFO - agent_discovery.py - 28 - agent_discovery: Discovering A2A agents...
-2025-08-24 15:36:10,124 - ERROR - agent_discovery.py - 62 - agent_discovery: Error checking port 9996: Cannot connect to host localhost:9996 ssl:default [The remote computer refused the network connection]
-2025-08-24 15:36:12,423 - ERROR - agent_discovery.py - 62 - agent_discovery: Error checking port 9997: Cannot connect to host localhost:9997 ssl:default [The remote computer refused the network connection]
-2025-08-24 15:36:12,953 - WARNING - _function_parameter_parse_util.py - 67 - _function_parameter_parse_util: Default value is not supported in function declaration schema for Google AI.
-2025-08-24 15:36:13,462 - INFO - google_llm.py - 111 - google_llm: Sending out request, model: gemini-2.0-flash, backend: GoogleLLMVariant.GEMINI_API, stream: False
-2025-08-24 15:36:14,164 - INFO - google_llm.py - 203 - google_llm: Response received from the model.
-2025-08-24 15:36:14,164 - WARNING - types.py - 5176 - types: Warning: there are non-text parts in the response: ['function_call'], returning concatenated text result from text parts. Check the full candidates.content.parts accessor to get the full model response.
-2025-08-24 15:36:14,669 - INFO - google_llm.py - 111 - google_llm: Sending out request, model: gemini-2.0-flash, backend: GoogleLLMVariant.GEMINI_API, stream: False
-2025-08-24 15:36:15,571 - INFO - google_llm.py - 203 - google_llm: Response received from the model.
-2025-08-24 15:36:20,627 - INFO - agent_executor.py - 28 - agent_executor: Context!: I want to create the character asuna
-2025-08-24 15:36:21,198 - INFO - google_llm.py - 111 - google_llm: Sending out request, model: gemini-2.0-flash, backend: GoogleLLMVariant.GEMINI_API, stream: False
-2025-08-24 15:36:21,862 - INFO - google_llm.py - 203 - google_llm: Response received from the model.
-2025-08-24 15:36:21,862 - WARNING - types.py - 5176 - types: Warning: there are non-text parts in the response: ['function_call'], returning concatenated text result from text parts. Check the full candidates.content.parts accessor to get the full model response.
-2025-08-24 15:36:21,864 - WARNING - _function_parameter_parse_util.py - 67 - _function_parameter_parse_util: Default value is not supported in function declaration schema for Google AI.
-2025-08-24 15:36:22,453 - INFO - google_llm.py - 111 - google_llm: Sending out request, model: gemini-2.0-flash, backend: GoogleLLMVariant.GEMINI_API, stream: False
-2025-08-24 15:36:23,190 - INFO - google_llm.py - 203 - google_llm: Response received from the model.
-2025-08-24 15:36:23,191 - WARNING - types.py - 5176 - types: Warning: there are non-text parts in the response: ['function_call'], returning concatenated text result from text parts. Check the full candidates.content.parts accessor to get the full model response.
-2025-08-24 15:36:23,192 - INFO - agent_discovery.py - 28 - agent_discovery: Discovering A2A agents...
-2025-08-24 15:36:25,494 - ERROR - agent_discovery.py - 62 - agent_discovery: Error checking port 9996: Cannot connect to host localhost:9996 ssl:default [The remote computer refused the network connection]
-2025-08-24 15:36:27,792 - ERROR - agent_discovery.py - 62 - agent_discovery: Error checking port 9997: Cannot connect to host localhost:9997 ssl:default [The remote computer refused the network connection]
-2025-08-24 15:36:28,325 - WARNING - _function_parameter_parse_util.py - 67 - _function_parameter_parse_util: Default value is not supported in function declaration schema for Google AI.
-2025-08-24 15:36:28,892 - INFO - google_llm.py - 111 - google_llm: Sending out request, model: gemini-2.0-flash, backend: GoogleLLMVariant.GEMINI_API, stream: False
-2025-08-24 15:36:29,638 - INFO - google_llm.py - 203 - google_llm: Response received from the model.
-2025-08-24 15:36:29,639 - WARNING - types.py - 5176 - types: Warning: there are non-text parts in the response: ['function_call'], returning concatenated text result from text parts. Check the full candidates.content.parts accessor to get the full model response.
-2025-08-24 15:36:30,237 - INFO - google_llm.py - 111 - google_llm: Sending out request, model: gemini-2.0-flash, backend: GoogleLLMVariant.GEMINI_API, stream: False
-2025-08-24 15:36:30,884 - INFO - google_llm.py - 203 - google_llm: Response received from the model.
-2025-08-24 15:37:05,952 - INFO - agent_executor.py - 22 - agent_executor: Initializing AgentExecutor
-2025-08-24 16:15:04,568 - INFO - agent_executor.py - 28 - agent_executor: Context!: I want to create the character asuna
-2025-08-24 16:32:01,498 - INFO - agent_executor.py - 22 - agent_executor: Initializing AgentExecutor
-2025-08-24 16:32:04,216 - INFO - agent_executor.py - 28 - agent_executor: Context!: I want to create the character asuna
-2025-08-24 16:39:42,148 - INFO - agent_executor.py - 22 - agent_executor: Initializing AgentExecutor
-2025-08-24 16:39:48,648 - INFO - agent_executor.py - 28 - agent_executor: Context!: I want to create the character asuna
-2025-08-24 16:41:46,940 - INFO - agent_executor.py - 50 - agent_executor: Extracted user_id: None, server_id: None
-2025-08-24 16:42:13,524 - INFO - agent_executor.py - 22 - agent_executor: Initializing AgentExecutor
-2025-08-24 16:42:22,795 - INFO - agent_executor.py - 28 - agent_executor: Full context: <a2a.server.agent_execution.context.RequestContext object at 0x0000016F4F06F380>
-2025-08-24 16:42:22,796 - INFO - agent_executor.py - 29 - agent_executor: Context attributes: ['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__firstlineno__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__static_attributes__', '__str__', '__subclasshook__', '__weakref__', '_call_context', '_check_or_generate_context_id', '_check_or_generate_task_id', '_context_id', '_current_task', '_params', '_related_tasks', '_task_id', 'add_activated_extension', 'attach_related_task', 'call_context', 'configuration', 'context_id', 'current_task', 'get_user_input', 'message', 'metadata', 'related_tasks', 'requested_extensions', 'task_id']
-2025-08-24 16:42:22,797 - INFO - agent_executor.py - 32 - agent_executor: Context!: I want to create the character asuna
-2025-08-24 16:42:22,797 - INFO - agent_executor.py - 44 - agent_executor: Context.add_activated_extension: <bound method RequestContext.add_activated_extension of <a2a.server.agent_execution.context.RequestContext object at 0x0000016F4F06F380>>
-2025-08-24 16:42:22,798 - INFO - agent_executor.py - 44 - agent_executor: Context.attach_related_task: <bound method RequestContext.attach_related_task of <a2a.server.agent_execution.context.RequestContext object at 0x0000016F4F06F380>>
-2025-08-24 16:42:22,798 - INFO - agent_executor.py - 44 - agent_executor: Context.call_context: state={'headers': {'content-type': 'application/json', 'user-agent': 'PostmanRuntime/7.45.0', 'accept': '*/*', 'postman-token': '47dbc608-f613-48bb-8ad9-658dda5377d7', 'host': 'localhost:9999', 'accept-encoding': 'gzip, deflate, br', 'connection': 'keep-alive', 'content-length': '462'}} user=<a2a.auth.user.UnauthenticatedUser object at 0x0000016F4EF279D0> requested_extensions=set() activated_extensions=set()
-2025-08-24 16:42:22,799 - INFO - agent_executor.py - 44 - agent_executor: Context.configuration: None
-2025-08-24 16:42:22,799 - INFO - agent_executor.py - 44 - agent_executor: Context.context_id: 98c063ca-8187-4bcd-b976-122ae3177a3d
-2025-08-24 16:42:22,799 - INFO - agent_executor.py - 44 - agent_executor: Context.current_task: None
-2025-08-24 16:42:22,800 - INFO - agent_executor.py - 44 - agent_executor: Context.get_user_input: <bound method RequestContext.get_user_input of <a2a.server.agent_execution.context.RequestContext object at 0x0000016F4F06F380>>
-2025-08-24 16:42:22,800 - INFO - agent_executor.py - 44 - agent_executor: Context.message: context_id='98c063ca-8187-4bcd-b976-122ae3177a3d' extensions=None kind='message' message_id='msg-001' metadata=None parts=[Part(root=TextPart(kind='text', metadata=None, text='I want to create the character asuna'))] reference_task_ids=None role=<Role.user: 'user'> task_id='e1acc037-4856-4fe3-a79c-1fe834b9ed6a'
-2025-08-24 16:42:22,801 - INFO - agent_executor.py - 44 - agent_executor: Context.metadata: {}
-2025-08-24 16:42:22,801 - INFO - agent_executor.py - 44 - agent_executor: Context.related_tasks: []
-2025-08-24 16:42:22,801 - INFO - agent_executor.py - 44 - agent_executor: Context.requested_extensions: set()
-2025-08-24 16:42:22,802 - INFO - agent_executor.py - 44 - agent_executor: Context.task_id: e1acc037-4856-4fe3-a79c-1fe834b9ed6a
-2025-08-24 16:42:42,333 - INFO - agent_executor.py - 68 - agent_executor: Extracted user_id: None, server_id: None, session_id: None
-2025-08-24 16:43:45,027 - INFO - google_llm.py - 111 - google_llm: Sending out request, model: gemini-2.0-flash, backend: GoogleLLMVariant.GEMINI_API, stream: False
-2025-08-24 16:44:09,224 - INFO - agent_executor.py - 22 - agent_executor: Initializing AgentExecutor
-2025-08-24 16:44:12,140 - INFO - agent_executor.py - 28 - agent_executor: Full context: <a2a.server.agent_execution.context.RequestContext object at 0x000002579381F380>
-2025-08-24 16:44:12,140 - INFO - agent_executor.py - 29 - agent_executor: Context attributes: ['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__firstlineno__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__static_attributes__', '__str__', '__subclasshook__', '__weakref__', '_call_context', '_check_or_generate_context_id', '_check_or_generate_task_id', '_context_id', '_current_task', '_params', '_related_tasks', '_task_id', 'add_activated_extension', 'attach_related_task', 'call_context', 'configuration', 'context_id', 'current_task', 'get_user_input', 'message', 'metadata', 'related_tasks', 'requested_extensions', 'task_id']
-2025-08-24 16:44:12,141 - INFO - agent_executor.py - 32 - agent_executor: Context!: I want to create the character asuna
-2025-08-24 16:44:12,141 - INFO - agent_executor.py - 42 - agent_executor: Call context state: {'headers': {'content-type': 'application/json', 'user-agent': 'PostmanRuntime/7.45.0', 'accept': '*/*', 'postman-token': '02d12749-dbf2-4894-b8d2-713654a0424d', 'host': 'localhost:9999', 'accept-encoding': 'gzip, deflate, br', 'connection': 'keep-alive', 'content-length': '462'}}
-2025-08-24 16:44:12,142 - INFO - agent_executor.py - 47 - agent_executor: Context._params: configuration=None message=Message(context_id='a845e6c3-c117-4644-976a-417d075aa24a', extensions=None, kind='message', message_id='msg-001', metadata=None, parts=[Part(root=TextPart(kind='text', metadata=None, text='I want to create the character asuna'))], reference_task_ids=None, role=<Role.user: 'user'>, task_id='11a8aad7-3fda-4dfc-b5ad-3569edb7d9eb') metadata=None
-2025-08-24 16:44:12,142 - INFO - agent_executor.py - 48 - agent_executor: Params type: <class 'a2a.types.MessageSendParams'>
-2025-08-24 16:44:12,142 - INFO - agent_executor.py - 49 - agent_executor: Params attributes: ['__abstractmethods__', '__annotations__', '__class__', '__class_getitem__', '__class_vars__', '__copy__', '__deepcopy__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__fields__', '__fields_set__', '__firstlineno__', '__format__', '__ge__', '__get_pydantic_core_schema__', '__get_pydantic_json_schema__', '__getattr__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__pretty__', '__private_attributes__', '__pydantic_complete__', '__pydantic_computed_fields__', '__pydantic_core_schema__', '__pydantic_custom_init__', '__pydantic_decorators__', '__pydantic_extra__', '__pydantic_fields__', '__pydantic_fields_set__', '__pydantic_generic_metadata__', '__pydantic_init_subclass__', '__pydantic_parent_namespace__', '__pydantic_post_init__', '__pydantic_private__', '__pydantic_root_model__', '__pydantic_serializer__', '__pydantic_setattr_handlers__', '__pydantic_validator__', '__reduce__', '__reduce_ex__', '__replace__', '__repr__', '__repr_args__', '__repr_name__', '__repr_recursion__', '__repr_str__', '__rich_repr__', '__setattr__', '__setstate__', '__signature__', '__sizeof__', '__slots__', '__static_attributes__', '__str__', '__subclasshook__', '__weakref__', '_abc_impl', '_calculate_keys', '_copy_and_set_values', '_get_value', '_iter', '_setattr_handler', 'configuration', 'construct', 'copy', 'dict', 'from_orm', 'json', 'message', 'metadata', 'model_computed_fields', 'model_config', 'model_construct', 'model_copy', 'model_dump', 'model_dump_json', 'model_extra', 'model_fields', 'model_fields_set', 'model_json_schema', 'model_parametrized_name', 'model_post_init', 'model_rebuild', 'model_validate', 'model_validate_json', 'model_validate_strings', 'parse_file', 'parse_obj', 'parse_raw', 'schema', 'schema_json', 'update_forward_refs', 'validate']
-2025-08-24 16:44:12,144 - INFO - agent_executor.py - 64 - agent_executor: Params.configuration: None
-2025-08-24 16:44:12,144 - INFO - agent_executor.py - 64 - agent_executor: Params.construct: <bound method BaseModel.construct of <class 'a2a.types.MessageSendParams'>>
-2025-08-24 16:44:12,144 - INFO - agent_executor.py - 64 - agent_executor: Params.copy: <bound method BaseModel.copy of MessageSendParams(configuration=None, message=Message(context_id='a845e6c3-c117-4644-976a-417d075aa24a', extensions=None, kind='message', message_id='msg-001', metadata=None, parts=[Part(root=TextPart(kind='text', metadata=None, text='I want to create the character asuna'))], reference_task_ids=None, role=<Role.user: 'user'>, task_id='11a8aad7-3fda-4dfc-b5ad-3569edb7d9eb'), metadata=None)>
-2025-08-24 16:44:12,144 - INFO - agent_executor.py - 64 - agent_executor: Params.dict: <bound method BaseModel.dict of MessageSendParams(configuration=None, message=Message(context_id='a845e6c3-c117-4644-976a-417d075aa24a', extensions=None, kind='message', message_id='msg-001', metadata=None, parts=[Part(root=TextPart(kind='text', metadata=None, text='I want to create the character asuna'))], reference_task_ids=None, role=<Role.user: 'user'>, task_id='11a8aad7-3fda-4dfc-b5ad-3569edb7d9eb'), metadata=None)>
-2025-08-24 16:44:12,145 - INFO - agent_executor.py - 64 - agent_executor: Params.from_orm: <bound method BaseModel.from_orm of <class 'a2a.types.MessageSendParams'>>
-2025-08-24 16:44:12,145 - INFO - agent_executor.py - 64 - agent_executor: Params.json: <bound method BaseModel.json of MessageSendParams(configuration=None, message=Message(context_id='a845e6c3-c117-4644-976a-417d075aa24a', extensions=None, kind='message', message_id='msg-001', metadata=None, parts=[Part(root=TextPart(kind='text', metadata=None, text='I want to create the character asuna'))], reference_task_ids=None, role=<Role.user: 'user'>, task_id='11a8aad7-3fda-4dfc-b5ad-3569edb7d9eb'), metadata=None)>
-2025-08-24 16:44:12,145 - INFO - agent_executor.py - 64 - agent_executor: Params.message: context_id='a845e6c3-c117-4644-976a-417d075aa24a' extensions=None kind='message' message_id='msg-001' metadata=None parts=[Part(root=TextPart(kind='text', metadata=None, text='I want to create the character asuna'))] reference_task_ids=None role=<Role.user: 'user'> task_id='11a8aad7-3fda-4dfc-b5ad-3569edb7d9eb'
-2025-08-24 16:44:12,146 - INFO - agent_executor.py - 64 - agent_executor: Params.metadata: None
-2025-08-24 16:44:12,146 - INFO - agent_executor.py - 64 - agent_executor: Params.model_computed_fields: {}
-2025-08-24 16:44:12,147 - INFO - agent_executor.py - 64 - agent_executor: Params.model_config: {'validate_by_name': True, 'validate_by_alias': True, 'serialize_by_alias': True, 'alias_generator': <function to_camel_custom at 0x00000257FE3371A0>}
-2025-08-24 16:44:12,147 - INFO - agent_executor.py - 64 - agent_executor: Params.model_construct: <bound method BaseModel.model_construct of <class 'a2a.types.MessageSendParams'>>
-2025-08-24 16:44:12,147 - INFO - agent_executor.py - 64 - agent_executor: Params.model_copy: <bound method BaseModel.model_copy of MessageSendParams(configuration=None, message=Message(context_id='a845e6c3-c117-4644-976a-417d075aa24a', extensions=None, kind='message', message_id='msg-001', metadata=None, parts=[Part(root=TextPart(kind='text', metadata=None, text='I want to create the character asuna'))], reference_task_ids=None, role=<Role.user: 'user'>, task_id='11a8aad7-3fda-4dfc-b5ad-3569edb7d9eb'), metadata=None)>
-2025-08-24 16:44:12,148 - INFO - agent_executor.py - 64 - agent_executor: Params.model_dump: <bound method BaseModel.model_dump of MessageSendParams(configuration=None, message=Message(context_id='a845e6c3-c117-4644-976a-417d075aa24a', extensions=None, kind='message', message_id='msg-001', metadata=None, parts=[Part(root=TextPart(kind='text', metadata=None, text='I want to create the character asuna'))], reference_task_ids=None, role=<Role.user: 'user'>, task_id='11a8aad7-3fda-4dfc-b5ad-3569edb7d9eb'), metadata=None)>
-2025-08-24 16:44:12,148 - INFO - agent_executor.py - 64 - agent_executor: Params.model_dump_json: <bound method BaseModel.model_dump_json of MessageSendParams(configuration=None, message=Message(context_id='a845e6c3-c117-4644-976a-417d075aa24a', extensions=None, kind='message', message_id='msg-001', metadata=None, parts=[Part(root=TextPart(kind='text', metadata=None, text='I want to create the character asuna'))], reference_task_ids=None, role=<Role.user: 'user'>, task_id='11a8aad7-3fda-4dfc-b5ad-3569edb7d9eb'), metadata=None)>
-2025-08-24 16:44:12,149 - INFO - agent_executor.py - 64 - agent_executor: Params.model_extra: None
-2025-08-24 16:44:12,149 - INFO - agent_executor.py - 64 - agent_executor: Params.model_fields: {'configuration': FieldInfo(annotation=Union[MessageSendConfiguration, NoneType], required=False, default=None, alias='configuration', alias_priority=1), 'message': FieldInfo(annotation=Message, required=True, alias='message', alias_priority=1), 'metadata': FieldInfo(annotation=Union[dict[str, Any], NoneType], required=False, default=None, alias='metadata', alias_priority=1)}
-2025-08-24 16:44:12,149 - INFO - agent_executor.py - 64 - agent_executor: Params.model_fields_set: {'message'}
-2025-08-24 16:44:12,150 - INFO - agent_executor.py - 64 - agent_executor: Params.model_json_schema: <bound method BaseModel.model_json_schema of <class 'a2a.types.MessageSendParams'>>
-2025-08-24 16:44:12,150 - INFO - agent_executor.py - 64 - agent_executor: Params.model_parametrized_name: <bound method BaseModel.model_parametrized_name of <class 'a2a.types.MessageSendParams'>>
-2025-08-24 16:44:12,150 - INFO - agent_executor.py - 64 - agent_executor: Params.model_post_init: <bound method BaseModel.model_post_init of MessageSendParams(configuration=None, message=Message(context_id='a845e6c3-c117-4644-976a-417d075aa24a', extensions=None, kind='message', message_id='msg-001', metadata=None, parts=[Part(root=TextPart(kind='text', metadata=None, text='I want to create the character asuna'))], reference_task_ids=None, role=<Role.user: 'user'>, task_id='11a8aad7-3fda-4dfc-b5ad-3569edb7d9eb'), metadata=None)>
-2025-08-24 16:44:12,151 - INFO - agent_executor.py - 64 - agent_executor: Params.model_rebuild: <bound method BaseModel.model_rebuild of <class 'a2a.types.MessageSendParams'>>
-2025-08-24 16:44:12,151 - INFO - agent_executor.py - 64 - agent_executor: Params.model_validate: <bound method BaseModel.model_validate of <class 'a2a.types.MessageSendParams'>>
-2025-08-24 16:44:12,151 - INFO - agent_executor.py - 64 - agent_executor: Params.model_validate_json: <bound method BaseModel.model_validate_json of <class 'a2a.types.MessageSendParams'>>
-2025-08-24 16:44:12,152 - INFO - agent_executor.py - 64 - agent_executor: Params.model_validate_strings: <bound method BaseModel.model_validate_strings of <class 'a2a.types.MessageSendParams'>>
-2025-08-24 16:44:12,152 - INFO - agent_executor.py - 64 - agent_executor: Params.parse_file: <bound method BaseModel.parse_file of <class 'a2a.types.MessageSendParams'>>
-2025-08-24 16:44:12,152 - INFO - agent_executor.py - 64 - agent_executor: Params.parse_obj: <bound method BaseModel.parse_obj of <class 'a2a.types.MessageSendParams'>>
-2025-08-24 16:44:12,153 - INFO - agent_executor.py - 64 - agent_executor: Params.parse_raw: <bound method BaseModel.parse_raw of <class 'a2a.types.MessageSendParams'>>
-2025-08-24 16:44:12,153 - INFO - agent_executor.py - 64 - agent_executor: Params.schema: <bound method BaseModel.schema of <class 'a2a.types.MessageSendParams'>>
-2025-08-24 16:44:12,153 - INFO - agent_executor.py - 64 - agent_executor: Params.schema_json: <bound method BaseModel.schema_json of <class 'a2a.types.MessageSendParams'>>
-2025-08-24 16:44:12,154 - INFO - agent_executor.py - 64 - agent_executor: Params.update_forward_refs: <bound method BaseModel.update_forward_refs of <class 'a2a.types.MessageSendParams'>>
-2025-08-24 16:44:12,154 - INFO - agent_executor.py - 64 - agent_executor: Params.validate: <bound method BaseModel.validate of <class 'a2a.types.MessageSendParams'>>
-2025-08-24 16:44:12,154 - INFO - agent_executor.py - 73 - agent_executor: Extracted user_id: None, server_id: None, session_id: None
-2025-08-24 16:46:05,226 - INFO - agent_executor.py - 22 - agent_executor: Initializing AgentExecutor
-2025-08-24 16:46:28,029 - INFO - agent_executor.py - 28 - agent_executor: Full context: <a2a.server.agent_execution.context.RequestContext object at 0x0000028F1AC2F380>
-2025-08-24 16:46:28,030 - INFO - agent_executor.py - 29 - agent_executor: Context attributes: ['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__firstlineno__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__static_attributes__', '__str__', '__subclasshook__', '__weakref__', '_call_context', '_check_or_generate_context_id', '_check_or_generate_task_id', '_context_id', '_current_task', '_params', '_related_tasks', '_task_id', 'add_activated_extension', 'attach_related_task', 'call_context', 'configuration', 'context_id', 'current_task', 'get_user_input', 'message', 'metadata', 'related_tasks', 'requested_extensions', 'task_id']
-2025-08-24 16:46:28,031 - INFO - agent_executor.py - 32 - agent_executor: Context!: I want to create the character asuna
-2025-08-24 16:46:28,031 - INFO - agent_executor.py - 43 - agent_executor: Found metadata: {'user_id': '03d4b2ea-865c-4b75-8337-f45e13bd0000', 'server_id': '03d4b2ea-865c-4b75-8337-f45e13bd1111', 'session_id': '03d4b2ea-865c-4b75-8337-f45e13bd2222'}
-2025-08-24 16:46:28,031 - INFO - agent_executor.py - 55 - agent_executor: Extracted user_id: 03d4b2ea-865c-4b75-8337-f45e13bd0000, server_id: 03d4b2ea-865c-4b75-8337-f45e13bd1111, session_id: 03d4b2ea-865c-4b75-8337-f45e13bd2222
-2025-08-24 17:53:07,670 - INFO - google_llm.py - 111 - google_llm: Sending out request, model: gemini-2.0-flash, backend: GoogleLLMVariant.GEMINI_API, stream: False
-2025-08-24 17:53:08,536 - INFO - google_llm.py - 203 - google_llm: Response received from the model.
-2025-08-24 17:53:08,536 - WARNING - types.py - 5176 - types: Warning: there are non-text parts in the response: ['function_call'], returning concatenated text result from text parts. Check the full candidates.content.parts accessor to get the full model response.
-2025-08-24 17:53:08,540 - WARNING - _function_parameter_parse_util.py - 67 - _function_parameter_parse_util: Default value is not supported in function declaration schema for Google AI.
-2025-08-24 17:53:09,051 - INFO - google_llm.py - 111 - google_llm: Sending out request, model: gemini-2.0-flash, backend: GoogleLLMVariant.GEMINI_API, stream: False
-2025-08-24 17:53:09,777 - INFO - google_llm.py - 203 - google_llm: Response received from the model.
-2025-08-24 17:53:09,778 - WARNING - types.py - 5176 - types: Warning: there are non-text parts in the response: ['function_call'], returning concatenated text result from text parts. Check the full candidates.content.parts accessor to get the full model response.
-2025-08-24 17:53:09,779 - INFO - agent_discovery.py - 28 - agent_discovery: Discovering A2A agents...
-2025-08-24 17:53:12,084 - ERROR - agent_discovery.py - 62 - agent_discovery: Error checking port 9996: Cannot connect to host localhost:9996 ssl:default [The remote computer refused the network connection]
-2025-08-24 17:53:14,391 - ERROR - agent_discovery.py - 62 - agent_discovery: Error checking port 9997: Cannot connect to host localhost:9997 ssl:default [The remote computer refused the network connection]
-2025-08-24 17:53:14,949 - WARNING - _function_parameter_parse_util.py - 67 - _function_parameter_parse_util: Default value is not supported in function declaration schema for Google AI.
-2025-08-24 17:53:15,470 - INFO - google_llm.py - 111 - google_llm: Sending out request, model: gemini-2.0-flash, backend: GoogleLLMVariant.GEMINI_API, stream: False
-2025-08-24 17:53:16,291 - INFO - google_llm.py - 203 - google_llm: Response received from the model.
-2025-08-24 17:53:16,291 - WARNING - types.py - 5176 - types: Warning: there are non-text parts in the response: ['function_call'], returning concatenated text result from text parts. Check the full candidates.content.parts accessor to get the full model response.
-2025-08-24 17:53:16,807 - INFO - google_llm.py - 111 - google_llm: Sending out request, model: gemini-2.0-flash, backend: GoogleLLMVariant.GEMINI_API, stream: False
-2025-08-24 17:53:17,582 - INFO - google_llm.py - 203 - google_llm: Response received from the model.
+2025-08-30 10:58:50,457 - INFO - agent_executor.py - 25 - agent_executor: Initializing AgentExecutor
+2025-08-30 10:59:00,250 - INFO - SentenceTransformer.py - 219 - SentenceTransformer: Use pytorch device_name: cpu
+2025-08-30 10:59:00,251 - INFO - SentenceTransformer.py - 227 - SentenceTransformer: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-30 10:59:01,689 - INFO - agent_executor.py - 34 - agent_executor: Initializing AgentExecutor
+2025-08-30 10:59:15,140 - INFO - agent_display.py - 135 - agent_display: 
+            [36m================================================================================
+            [36m🤖 AGENT EXECUTION STARTED
+            [36m================================================================================
+            [37mAgent: [33mVeritasAgent
+            [37mUser ID: [32m03d4b2ea-865c-4b75-8337-f45e13bd0000
+            [37mExecution ID: [34m8ea7e156...
+            [37mStarted: [35m10:59:15
+            [36m================================================================================[0m
+        
+2025-08-30 10:59:15,141 - INFO - agent_display.py - 138 - agent_display: [36m┌─ ℹ️ Step 1: INFO [0.00s][0m
+[36m│ [0mProcessing Request: "I want to create the character asuna..."
+[36m└──────────────────────────────────────────────────[0m
+2025-08-30 10:59:15,141 - INFO - agent_display.py - 143 - agent_display: [37m┌─ 📝 Step 2: VERITASAGENT [0.00s][0m
+[37m│ [0m🎯 Starting agent execution with session 8ea7e156-404a-4eae-9985-71b117a12e36
+[37m└──────────────────────────────────────────────────[0m
+2025-08-30 10:59:15,680 - INFO - google_llm.py - 111 - google_llm: Sending out request, model: gemini-1.5-flash, backend: GoogleLLMVariant.GEMINI_API, stream: False
+2025-08-30 10:59:16,248 - INFO - google_llm.py - 203 - google_llm: Response received from the model.
+2025-08-30 10:59:16,248 - WARNING - types.py - 5176 - types: Warning: there are non-text parts in the response: ['function_call'], returning concatenated text result from text parts. Check the full candidates.content.parts accessor to get the full model response.
+2025-08-30 10:59:16,250 - INFO - agent_display.py - 143 - agent_display: [37m┌─ 📝 Step 3: VERITASAGENT [1.11s][0m
+[37m│ [0m📡 Event #1: Event
+[37m└──────────────────────────────────────────────────[0m
+2025-08-30 10:59:16,251 - INFO - agent_display.py - 143 - agent_display: [37m┌─ 📝 Step 4: VERITASAGENT [1.11s][0m
+[37m│ [0m📡 Event #2: Event
+[37m└──────────────────────────────────────────────────[0m
+2025-08-30 10:59:16,253 - WARNING - _function_parameter_parse_util.py - 67 - _function_parameter_parse_util: Default value is not supported in function declaration schema for Google AI.
+2025-08-30 10:59:16,753 - INFO - google_llm.py - 111 - google_llm: Sending out request, model: gemini-1.5-flash, backend: GoogleLLMVariant.GEMINI_API, stream: False
+2025-08-30 10:59:17,514 - INFO - google_llm.py - 203 - google_llm: Response received from the model.
+2025-08-30 10:59:17,515 - WARNING - types.py - 5176 - types: Warning: there are non-text parts in the response: ['function_call'], returning concatenated text result from text parts. Check the full candidates.content.parts accessor to get the full model response.
+2025-08-30 10:59:17,516 - INFO - agent_display.py - 143 - agent_display: [37m┌─ 📝 Step 5: VERITASAGENT [2.38s][0m
+[37m│ [0m📡 Event #3: Event
+[37m└──────────────────────────────────────────────────[0m
+2025-08-30 10:59:17,517 - INFO - agent_display.py - 143 - agent_display: [34m┌─ 🔧 Step 1: TOOL_CALL [0.00s][0m
+[34m│ [0mCalling tool: delegate_to_agent_tool
+[34m│ [37mDetails: {'parameters': None}[0m
+[34m└──────────────────────────────────────────────────[0m
+2025-08-30 10:59:17,517 - INFO - utility_tools.py - 31 - utility_tools: 🔍 Discovering agents for task: I want to create the character asuna
+2025-08-30 10:59:17,517 - INFO - agent_discovery.py - 28 - agent_discovery: Discovering A2A agents...
+2025-08-30 10:59:17,777 - INFO - agent_discovery.py - 51 - agent_discovery: Agent card received from port 9998: Mechanics
+2025-08-30 10:59:17,777 - INFO - agent_discovery.py - 36 - agent_discovery: Discovered agent: Mechanics at port 9998
+2025-08-30 10:59:17,778 - INFO - utility_tools.py - 33 - utility_tools: 🔍 Found 1 agents: ['Mechanics']
+2025-08-30 10:59:17,779 - INFO - agent_discovery.py - 28 - agent_discovery: Discovering A2A agents...
+2025-08-30 10:59:18,038 - INFO - agent_discovery.py - 51 - agent_discovery: Agent card received from port 9998: Mechanics
+2025-08-30 10:59:18,039 - INFO - agent_discovery.py - 36 - agent_discovery: Discovered agent: Mechanics at port 9998
+2025-08-30 10:59:18,331 - INFO - agent_display.py - 135 - agent_display: 
+            [36m================================================================================
+            [36m🤖 AGENT EXECUTION STARTED
+            [36m================================================================================
+            [37mAgent: [33mMechanicsAgent
+            [37mUser ID: [32muser
+            [37mExecution ID: [34m86bf512f...
+            [37mStarted: [35m10:59:18
+            [36m================================================================================[0m
+        
+2025-08-30 10:59:18,332 - INFO - agent_display.py - 138 - agent_display: [36m┌─ ℹ️ Step 1: INFO [0.00s][0m
+[36m│ [0mProcessing Request: "I want to create the character asuna..."
+[36m└──────────────────────────────────────────────────[0m
+2025-08-30 10:59:18,332 - INFO - agent_executor.py - 102 - agent_executor: 🎯 Starting agent execution with session 86bf512f-29c7-44ad-98d1-d98a5c676e8d
+2025-08-30 10:59:18,952 - INFO - google_llm.py - 111 - google_llm: Sending out request, model: gemini-1.5-flash, backend: GoogleLLMVariant.GEMINI_API, stream: False
+2025-08-30 10:59:19,557 - INFO - google_llm.py - 203 - google_llm: Response received from the model.
+2025-08-30 10:59:19,558 - WARNING - types.py - 5176 - types: Warning: there are non-text parts in the response: ['function_call'], returning concatenated text result from text parts. Check the full candidates.content.parts accessor to get the full model response.
+2025-08-30 10:59:19,559 - INFO - agent_display.py - 143 - agent_display: [37m┌─ 📝 Step 2: MECHANICS_AGENT [1.23s][0m
+[37m│ [0mI want to create the character asuna
+[37m└──────────────────────────────────────────────────[0m
+2025-08-30 10:59:19,561 - INFO - agent_display.py - 143 - agent_display: [37m┌─ 📝 Step 3: MECHANICS_AGENT [1.23s][0m
+[37m│ [0mI want to create the character asuna
+[37m└──────────────────────────────────────────────────[0m
+2025-08-30 10:59:20,066 - INFO - google_llm.py - 111 - google_llm: Sending out request, model: gemini-1.5-flash, backend: GoogleLLMVariant.GEMINI_API, stream: False
+2025-08-30 10:59:20,713 - INFO - google_llm.py - 203 - google_llm: Response received from the model.
+2025-08-30 10:59:20,715 - INFO - agent_display.py - 143 - agent_display: [37m┌─ 📝 Step 4: CHARACTER_SUB_AGENT [2.38s][0m
+[37m│ [0mI want to create the character asuna
+[37m└──────────────────────────────────────────────────[0m
+2025-08-30 10:59:20,715 - INFO - agent_display.py - 143 - agent_display: [37m┌─ 📝 Step 5: CHARACTER_SUB_AGENT [2.38s][0m
+[37m│ [0m💬 Agent Response Part 1: I need more information to create Asuna.  What server and player ID should she be associated with? What class is she?  What other details do you want to include (age, bio, etc.)?
+[37m└──────────────────────────────────────────────────[0m
+2025-08-30 10:59:20,718 - INFO - agent_display.py - 143 - agent_display: [37m┌─ 📝 Step 6: CHARACTER_SUB_AGENT [2.39s][0m
+[37m│ [0m✅ MECHANICS AGENT COMPLETED - Processed 3 events for session 86bf512f-29c7-44ad-98d1-d98a5c676e8d
+[37m└──────────────────────────────────────────────────[0m
+2025-08-30 10:59:20,719 - ERROR - default_request_handler.py - 314 - default_request_handler: Agent execution failed
+Traceback (most recent call last):
+  File "c:\Users\Chibi\miniconda3\envs\RP-MCP\Lib\site-packages\a2a\server\request_handlers\default_request_handler.py", line 304, in on_message_send
+    raise ServerError(error=InternalError())  # noqa: TRY301
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+a2a.utils.errors.ServerError
+2025-08-30 10:59:20,731 - INFO - agent_display.py - 143 - agent_display: [37m┌─ 📝 Step 6: VERITASAGENT [5.59s][0m
+[37m│ [0m📡 Event #4: Event
+[37m└──────────────────────────────────────────────────[0m
+2025-08-30 10:59:20,733 - WARNING - _function_parameter_parse_util.py - 67 - _function_parameter_parse_util: Default value is not supported in function declaration schema for Google AI.
+2025-08-30 10:59:21,257 - INFO - google_llm.py - 111 - google_llm: Sending out request, model: gemini-1.5-flash, backend: GoogleLLMVariant.GEMINI_API, stream: False
+2025-08-30 10:59:21,844 - INFO - google_llm.py - 203 - google_llm: Response received from the model.
+2025-08-30 10:59:21,845 - INFO - agent_display.py - 143 - agent_display: [37m┌─ 📝 Step 7: VERITASAGENT [6.70s][0m
+[37m│ [0m📡 Event #5: Event
+[37m└──────────────────────────────────────────────────[0m
+2025-08-30 10:59:21,845 - INFO - agent_display.py - 143 - agent_display: [37m┌─ 📝 Step 8: VERITASAGENT [6.71s][0m
+[37m│ [0m💬 Agent Response Part 1: OK. I've delegated the task of creating the character Asuna to the Mechanics agent.  Is there anything else I can help with?
+[37m└──────────────────────────────────────────────────[0m
+2025-08-30 10:59:21,848 - INFO - agent_display.py - 143 - agent_display: [37m┌─ 📝 Step 9: VERITASAGENT [6.71s][0m
+[37m│ [0m✅ VERITAS AGENT COMPLETED - Processed 5 events for session 8ea7e156-404a-4eae-9985-71b117a12e36
+[37m└──────────────────────────────────────────────────[0m
+2025-08-30 10:59:21,849 - ERROR - default_request_handler.py - 314 - default_request_handler: Agent execution failed
+Traceback (most recent call last):
+  File "c:\Users\Chibi\miniconda3\envs\RP-MCP\Lib\site-packages\a2a\server\request_handlers\default_request_handler.py", line 304, in on_message_send
+    raise ServerError(error=InternalError())  # noqa: TRY301
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+a2a.utils.errors.ServerError

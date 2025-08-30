@@ -3,6 +3,7 @@ from a2a.server.agent_execution import AgentExecutor, RequestContext
 from a2a.server.events import EventQueue
 from a2a.utils import new_agent_text_message
 from agent import VeritasAgent
+from google.genai import types
 import uuid
 import logging
 import warnings
@@ -27,41 +28,73 @@ class AgentExecutor(AgentExecutor):
 
     @override
     async def execute(self, context: RequestContext, event_queue: EventQueue) -> None:
-        # Extract message text from the request context
-        message_text = context.message.parts[0].root.text
-        # Extract user_id and server_id from context
-        user_id = None
-        server_id = None
-        session_id = None
-        # Also check context metadata as fallback
-        if context.metadata:
-            logger.info(f"Checking context metadata: {context.metadata}")
-            user_id = context.metadata.get('user_id')
-            if user_id is None:
-                logger.info("No user_id found")
-                raise Exception("No user_id found")
-            server_id = context.metadata.get('server_id')
-            if server_id is None:
-                logger.info("No server_id found")
-                raise Exception("No server_id found")
-            session_id = context.metadata.get('session_id')
-            if session_id is None:
-                logger.info("No session_id found: Creating sesion")
-                session_id = str(uuid.uuid4())        
-        if hasattr(context, 'message') and context.message:
-            if hasattr(context.message, 'parts') and context.message.parts:
-                for part in context.message.parts:
-                    if hasattr(part, 'text'):
-                        message_text += part.text
-        
-        # If no message found, use a default
+        # Extract message text
+        message_text = None
+        if hasattr(context.message, "parts") and context.message.parts:
+            message_text = "".join(
+                part.root.text for part in context.message.parts if hasattr(part, "root") and hasattr(part.root, "text")
+            )
+
         if not message_text:
             raise Exception("No message found in request context")
+
+        # Metadata (fall back if missing)
+        user_id = context.metadata.get("user_id") if context.metadata else str(uuid.uuid4())
+        server_id = context.metadata.get("server_id") if context.metadata else "default-server"
         
-        # Invoke agent with the actual message and context
+        # Always create a new session to avoid "Session not found" errors
+        session = await self.agent.session.create_session(
+            app_name=self.agent.runner.app_name,
+            user_id=user_id,
+        )
+        session_id = session.id
         self.agent_logger.start_execution(user_id, session_id, message_text)
-        result = await self.agent.invoke(message_text, user_id=user_id, server_id=server_id)
-        await event_queue.enqueue_event(new_agent_text_message(result))
+
+        # 🔑 Now run the agent within that session
+        # Convert message to Content format (same as agent.py invoke method)
+        content = types.Content(
+            role="user",
+            parts=[types.Part.from_text(text=message_text)],
+        )
+        
+        event_count = 0
+        self.agent_logger.log_step("VeritasAgent", f"🎯 Starting agent execution with session {session_id}")
+        
+        async for event in self.agent.runner.run_async(
+            user_id=user_id,
+            session_id=session_id,
+            new_message=content,
+        ):
+            event_count += 1
+            
+            # Log different types of events for debugging
+            event_type = type(event).__name__
+            self.agent_logger.log_step("VeritasAgent", f"📡 Event #{event_count}: {event_type}")
+            
+            # Log specific event details
+            if hasattr(event, 'text') and event.text:
+                self.agent_logger.log_step("VeritasAgent", f"💬 Agent Response: {event.text[:200]}{'...' if len(event.text) > 200 else ''}")
+            elif hasattr(event, 'content'):
+                if hasattr(event.content, 'parts'):
+                    for i, part in enumerate(event.content.parts):
+                        if hasattr(part, 'text') and part.text:
+                            self.agent_logger.log_step("VeritasAgent", f"💬 Agent Response Part {i+1}: {part.text[:200]}{'...' if len(part.text) > 200 else ''}")
+                        elif hasattr(part, 'function_call'):
+                            func_call = part.function_call
+                            func_name = getattr(func_call, 'name', 'Unknown') if func_call else 'Unknown'
+                            func_args = getattr(func_call, 'args', {}) if func_call else {}
+                        #    logger.info(f"🔧 Function Call: {func_name} | Args: {str(func_args)[:100]}{'...' if len(str(func_args)) > 100 else ''}")
+                        elif hasattr(part, 'function_response'):
+                            func_resp = part.function_response
+                            func_name = getattr(func_resp, 'name', 'Unknown') if func_resp else 'Unknown'
+                            func_result = getattr(func_resp, 'response', getattr(func_resp, 'result', 'No result')) if func_resp else 'No result'
+                        #    logger.info(f"🔄 Function Response: {func_name} | Result: {str(func_result)[:100]}{'...' if len(str(func_result)) > 100 else ''}")
+                else:
+                    self.agent_logger.log_step("VeritasAgent", "📄 Event Content: ")
+            
+            await event_queue.enqueue_event(event)
+        
+        self.agent_logger.log_step("VeritasAgent", f"✅ VERITAS AGENT COMPLETED - Processed {event_count} events for session {session_id}")
 
     @override
     async def cancel(self, context: RequestContext, event_queue: EventQueue) -> None:

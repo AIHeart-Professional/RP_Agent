@@ -2,14 +2,16 @@ import asyncio
 import logging
 from typing import Dict, Any, Optional
 from .agent_discovery import agent_discovery, AgentInfo
+from config.logging_config import setup_logging
+from utils.agent_display import AgentLogger
 
-# TODO: Move these to a configuration file
-logging.basicConfig(level=logging.INFO)
-
+setup_logging()
 logger = logging.getLogger(__name__)
 
 async def discover_available_agents() -> str:
     """Tool to discover all available A2A agents"""
+    agent_logger = AgentLogger("discover_available_agents_tool")
+    agent_logger.log_tool_call("discover_available_agents_tool")
     try:
         discovered = await agent_discovery.discover_agents()
         logger.info(f"Discovery complete. Found {len(discovered)} agents: {list(discovered.keys())}")
@@ -22,15 +24,25 @@ async def discover_available_agents() -> str:
 
 async def delegate_to_agent(task_description: str, additional_context: str = "") -> Dict[str, Any]:
     """Tool to find and delegate a task to the most appropriate A2A agent"""
+    agent_logger = AgentLogger("delegate_to_agent_tool")
+    agent_logger.log_tool_call("delegate_to_agent_tool")
     try:
+        # Force discovery refresh to ensure we have latest agents
+        logger.info(f"🔍 Discovering agents for task: {task_description}")
+        discovered = await agent_discovery.discover_agents()
+        logger.info(f"🔍 Found {len(discovered)} agents: {list(discovered.keys())}")
+        
         # Find the best agent for this task
         agent_info = await agent_discovery.find_agent_for_task(task_description)
         
         if not agent_info:
+            available_summary = agent_discovery.get_agent_capabilities_summary()
+            logger.error(f"❌ No suitable agent found for task: {task_description}")
+            logger.error(f"Available agents: {available_summary}")
             return {
                 "success": False,
                 "error": "No suitable agent found for this task",
-                "available_agents": agent_discovery.get_agent_capabilities_summary()
+                "available_agents": available_summary
             }
         
         # Find the best skill for this task
@@ -87,6 +99,8 @@ async def delegate_to_agent(task_description: str, additional_context: str = "")
 
 async def call_specific_agent(agent_name: str, skill_name: str, request_data: Dict[str, Any]) -> Dict[str, Any]:
     """Tool to call a specific agent and skill directly"""
+    agent_logger = AgentLogger("call_specific_agent_tool")
+    agent_logger.log_tool_call("call_specific_agent_tool", request_data)
     try:
         # Refresh agent list
         await agent_discovery.discover_agents()

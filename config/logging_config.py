@@ -25,9 +25,16 @@ def setup_logging(default_path='logging.yaml', default_level=logging.INFO):
                 os.makedirs(logs_dir)
             
             # Update file handler paths to be absolute
-            if 'handlers' in config and 'file' in config['handlers']:
-                log_file_path = os.path.join(logs_dir, 'app.log')
-                config['handlers']['file']['filename'] = log_file_path
+            if 'handlers' in config:
+                # Handle main file handler
+                if 'file' in config['handlers']:
+                    log_file_path = os.path.join(logs_dir, 'app.log')
+                    config['handlers']['file']['filename'] = log_file_path
+                
+                # Handle context_file handler
+                if 'context_file' in config['handlers']:
+                    context_log_path = os.path.join(logs_dir, 'context.log')
+                    config['handlers']['context_file']['filename'] = context_log_path
             
             # Check if colorlog is available, fallback to simple formatter if not
             try:

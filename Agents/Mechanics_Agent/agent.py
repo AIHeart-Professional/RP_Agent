@@ -63,6 +63,7 @@ class MechanicsAgent:
             model="gemini-1.5-flash",
             description="Agent designed as a parent agent whose purpose is to delegate tasks to other agents.",
             instruction="You are a parent agent that immediately delegates all user requests to your sub-agent.",
+            output_key="veritas",
             sub_agents=[character_sub_agent],
         )
         
