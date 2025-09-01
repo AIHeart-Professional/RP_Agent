@@ -15,38 +15,30 @@ def create_character_tool(
     server_id: str,
     player_id: str, 
     character_name: str,
-    character_class: str,
-    first_name: Optional[str] = None,
-    last_name: Optional[str] = None,
-    cursor_color: Optional[str] = None,
-    height: Optional[str] = None,
-    physique: Optional[str] = None,
-    age: Optional[int] = None,
-    birthday: Optional[str] = None,
-    bio: Optional[str] = None
-):
-    """Create a new character with specified attributes."""
+    character_class: str
+) -> Dict[str, Any]:
+    """Create a new character with required fields only."""
     return create_character_function(
         server_id=server_id,
         player_id=player_id,
         character_name=character_name,
         character_class=character_class,
-        first_name=first_name,
-        last_name=last_name,
-        cursor_color=cursor_color,
-        height=height,
-        physique=physique,
-        age=age,
-        birthday=birthday,
-        bio=bio
+        first_name=None,
+        last_name=None,
+        cursor_color=None,
+        height=None,
+        physique=None,
+        age=None,
+        birthday=None,
+        bio=None
     )
 
 
 def get_character_tool(
     player_id: str,
     server_id: str,
-    character_name: Optional[str] = None,
-    character_id: Optional[str] = None
+    character_name: Optional[str],
+    character_id: Optional[str]
 ) -> Dict[str, Any]:
     """Retrieve a character record by name or ID."""
     return get_character_function(
@@ -71,15 +63,13 @@ def update_character_tool(
 def delete_character_tool(
     player_id: str,
     server_id: str,
-    character_name: Optional[str] = None,
-    character_id: Optional[str] = None
+    character_name: Optional[str],
 ) -> Dict[str, Any]:
     """Delete a character record by name or ID."""
     return delete_character_function(
         player_id=player_id,
         server_id=server_id,
-        character_name=character_name,
-        character_id=character_id
+        character_name=character_name
     )
 
 

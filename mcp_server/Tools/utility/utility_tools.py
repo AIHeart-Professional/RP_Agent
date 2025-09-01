@@ -22,7 +22,7 @@ async def discover_available_agents() -> str:
         logger.error(f"Error discovering agents: {e}")
         return f"Failed to discover agents: {str(e)}"
 
-async def delegate_to_agent(task_description: str, additional_context: str = "") -> Dict[str, Any]:
+async def delegate_to_agent(task_description: str, user_id: str, server_id: str, additional_context: str = "") -> Dict[str, Any]:
     """Tool to find and delegate a task to the most appropriate A2A agent"""
     agent_logger = AgentLogger("delegate_to_agent_tool")
     agent_logger.log_tool_call("delegate_to_agent_tool")
@@ -80,7 +80,9 @@ async def delegate_to_agent(task_description: str, additional_context: str = "")
         result = await agent_discovery.call_agent_skill(
             agent_info, 
             best_skill.get("id", best_skill.get("name", "default")), 
-            request_data
+            request_data,
+            user_id,
+            server_id
         )
         
         return {
@@ -97,7 +99,7 @@ async def delegate_to_agent(task_description: str, additional_context: str = "")
             "error": f"Failed to delegate task: {str(e)}"
         }
 
-async def call_specific_agent(agent_name: str, skill_name: str, request_data: Dict[str, Any]) -> Dict[str, Any]:
+async def call_specific_agent(agent_name: str, skill_name: str, user_id: str, server_id: str, request_data: Dict[str, Any]) -> Dict[str, Any]:
     """Tool to call a specific agent and skill directly"""
     agent_logger = AgentLogger("call_specific_agent_tool")
     agent_logger.log_tool_call("call_specific_agent_tool", request_data)
@@ -132,7 +134,9 @@ async def call_specific_agent(agent_name: str, skill_name: str, request_data: Di
         result = await agent_discovery.call_agent_skill(
             agent_info,
             target_skill.get("id", target_skill.get("name", "default")),
-            request_data
+            request_data,
+            user_id,
+            server_id
         )
         
         return {

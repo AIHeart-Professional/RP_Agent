@@ -13,14 +13,7 @@ agent_delegator_sub_agent = Agent(
     name="agent_delegator_sub_agent",
     model="gemini-1.5-flash",
     description="Agent that delegates tasks to other A2A agents in the system.",
-    instruction="""You are a task delegation specialist. When given a user request, you MUST use the delegate_to_agent() function to send the task to the appropriate external A2A agent. 
-
-IMPORTANT: Do NOT try to transfer control to other agents directly. Always use the delegate_to_agent() tool function to communicate with external agents.
-
-For character-related requests (create character, stats, leveling), use delegate_to_agent() to send the task to the Mechanics agent.
-For inventory-related requests (items, equipment, inventory management), use delegate_to_agent() to send the task to the Mechanics agent.
-
-Always call delegate_to_agent() with the full user request as the task_description parameter.""",
+    instruction="You are a task delegation specialist. When given a user request, you MUST use the delegate_to_agent() function to send the task to the appropriate external A2A agent.",
     tools=[discover_available_agents, delegate_to_agent, call_specific_agent],
     output_key="agent_response"
 )

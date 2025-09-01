@@ -100,7 +100,7 @@ class A2AAgentDiscovery:
                 
         return best_match
     
-    async def call_agent_skill(self, agent_info: AgentInfo, skill_id: str, request_data: Dict) -> Dict:
+    async def call_agent_skill(self, agent_info: AgentInfo, skill_id: str, request_data: Dict, user_id: str, server_id: str) -> Dict:
         """Call a specific skill on an A2A agent"""
         logger.debug(f"Calling skill {skill_id} on agent {agent_info.name}")
         # For A2A agents created with to_a2a(), we need to call the /tasks endpoint
@@ -113,9 +113,8 @@ class A2AAgentDiscovery:
             "method": "message/send",
             "params": {
                 "metadata": {
-                    "server_id": "server",
-                    "user_id": "user",
-                    "session_id": "default_session"
+                    "server_id": server_id,
+                    "user_id": user_id,
                 },
                 "message": {
                     "messageId": str(uuid.uuid4()),

@@ -17,7 +17,7 @@ from mcp_server.Tools.Character.adk_tool import (
 character_sub_agent = Agent(
     name="character_sub_agent",
     model="gemini-1.5-flash",
-    description="Agent designed to handle character interactions for a roleplaying game.",
-    instruction="You are an expert at managing characters for a roleplaying game. You can help with things such as editing character information, creating characters, and deleting characters.",
+    description="Agent designed to handle character interactions.",
+instruction="You will take the users request and delegate it to the appropriate tools. Extract server_id and player_id (user_id) from the [CONTEXT] section of messages.",
     tools=[create_character_tool, update_character_tool, get_character_tool, delete_character_tool],
 )

@@ -57,14 +57,14 @@ class MechanicsAgent:
         
         os.environ["GOOGLE_API_KEY"] = api_key
         
-        # Create the agent once during initialization
+
         self.agent = Agent(
             name="mechanics_agent",
             model="gemini-1.5-flash",
             description="Agent designed as a parent agent whose purpose is to delegate tasks to other agents.",
-            instruction="You are a parent agent that immediately delegates all user requests to your sub-agent.",
-            output_key="veritas",
-            sub_agents=[character_sub_agent],
+            instruction="You are a mechanics agent that focuses on the logical application of user requests. You will always delegate requests to your sub-agents, never perform actions yourself.",
+            output_key="mechanics",
+            sub_agents=[character_sub_agent]
         )
         
         # Create session first
@@ -76,63 +76,3 @@ class MechanicsAgent:
             agent=self.agent,
             session_service=self.session
         )
-
-    async def invoke(self, message: str = "hello world"):
-        """Process a message and return the agent's text response"""
-        try:
-            # Create a session
-            user_id = str(uuid.uuid4())
-            session = await self.session.create_session(
-                app_name=self.runner.app_name,
-                user_id=user_id
-            )
-            session_id = session.id
-            
-            # Convert message to Content format
-            content = types.Content(
-                role="user",
-                parts=[types.Part.from_text(text=message)],
-            )
-            
-            # Run the agent with the message
-            last_event = None
-            async for event in self.runner.run_async(
-                user_id=user_id,
-                session_id=session_id,
-                new_message=content,
-            ):
-                last_event = event
-            
-            # Extract response from the final event
-            if last_event:
-                # Try to get text response first
-                if hasattr(last_event, 'text') and last_event.text:
-                    return last_event.text
-                
-                # Handle Content objects with parts
-                if hasattr(last_event, 'content') and hasattr(last_event.content, 'parts'):
-                    text_parts = []
-                    for part in last_event.content.parts:
-                        if hasattr(part, 'text') and part.text:
-                            text_parts.append(part.text)
-                        elif hasattr(part, 'function_call'):
-                            # Handle function call results
-                            func_call = part.function_call
-                            if hasattr(func_call, 'name') and hasattr(func_call, 'args'):
-                                text_parts.append(f"Function call: {func_call.name} with args: {func_call.args}")
-                    
-                    if text_parts:
-                        return "\n".join(text_parts)
-                
-                # Fallback to content attribute
-                elif hasattr(last_event, 'content'):
-                    return str(last_event.content)
-                
-                # Last resort - convert event to string
-                return str(last_event)
-            
-            return "No response received"
-                
-        except Exception as e:
-            logger.error(f"Error in agent invoke: {e}")
-            return f"Error processing request: {str(e)}"

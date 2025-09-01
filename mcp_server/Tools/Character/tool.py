@@ -19,14 +19,14 @@ def create_character_tool(
     player_id: str, 
     character_name: str,
     character_class: str,
-    first_name: Optional[str] = None,
-    last_name: Optional[str] = None,
-    cursor_color: Optional[str] = None,
-    height: Optional[str] = None,
-    physique: Optional[str] = None,
-    age: Optional[int] = None,
-    birthday: Optional[str] = None,
-    bio: Optional[str] = None
+    first_name: Optional[str],
+    last_name: Optional[str],
+    cursor_color: Optional[str],
+    height: Optional[str],
+    physique: Optional[str],
+    age: Optional[int],
+    birthday: Optional[str],
+    bio: Optional[str]
 ) -> Dict[str, Any]:
     """
     Create a new character with the specified schema and insert into MongoDB.
@@ -163,16 +163,11 @@ def create_character_tool(
         if client:
             client.close()
 
-def update_character_tool(request: dict):
-    # Call the database to find if a players player_id and server_id have a character where active is true
-    return True
-        
-        
 def get_character_tool(
     player_id: str,
     server_id: str,
-    character_name: Optional[str] = None,
-    character_id: Optional[str] = None
+    character_name: Optional[str],
+    character_id: Optional[str]
 ) -> Dict[str, Any]:
     """
     Retrieve a character record from MongoDB.
@@ -423,8 +418,7 @@ def update_character_tool(
 def delete_character_tool(
     player_id: str,
     server_id: str,
-    character_name: Optional[str] = None,
-    character_id: Optional[str] = None,
+    character_name: Optional[str],
 ) -> Dict[str, Any]:
     """
     Delete a character record from MongoDB.
@@ -435,7 +429,6 @@ def delete_character_tool(
     
     Optional fields (at least one must be provided):
     - character_name: Name of the character to delete
-    - character_id: MongoDB ObjectId of the character
     
     Returns:
     - Dict with success status and deletion details or error message
@@ -453,7 +446,7 @@ def delete_character_tool(
             }
         
         # Validate that at least one identifier is provided
-        if not character_name and not character_id:
+        if not character_name:
             logger.info("No character name or ID provided")
             return {
                 "success": False,

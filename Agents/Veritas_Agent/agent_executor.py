@@ -51,51 +51,45 @@ class AgentExecutor(AgentExecutor):
         self.agent_logger.start_execution(user_id, session_id, message_text)
 
         # 🔑 Now run the agent within that session
-        # Convert message to Content format (same as agent.py invoke method)
+        # Convert message to Content format and include context metadata
+        enhanced_message = f"""[CONTEXT]
+            user_id: {user_id}
+            server_id: {server_id}
+
+            [USER REQUEST]
+            {message_text}"""
+        
         content = types.Content(
             role="user",
-            parts=[types.Part.from_text(text=message_text)],
+            parts=[types.Part.from_text(text=enhanced_message)],
         )
         
         event_count = 0
         self.agent_logger.log_step("VeritasAgent", f"🎯 Starting agent execution with session {session_id}")
         
+        final_text = None
+
         async for event in self.agent.runner.run_async(
             user_id=user_id,
             session_id=session_id,
             new_message=content,
         ):
-            event_count += 1
-            
-            # Log different types of events for debugging
-            event_type = type(event).__name__
-            self.agent_logger.log_step("VeritasAgent", f"📡 Event #{event_count}: {event_type}")
-            
-            # Log specific event details
-            if hasattr(event, 'text') and event.text:
-                self.agent_logger.log_step("VeritasAgent", f"💬 Agent Response: {event.text[:200]}{'...' if len(event.text) > 200 else ''}")
-            elif hasattr(event, 'content'):
-                if hasattr(event.content, 'parts'):
-                    for i, part in enumerate(event.content.parts):
-                        if hasattr(part, 'text') and part.text:
-                            self.agent_logger.log_step("VeritasAgent", f"💬 Agent Response Part {i+1}: {part.text[:200]}{'...' if len(part.text) > 200 else ''}")
-                        elif hasattr(part, 'function_call'):
-                            func_call = part.function_call
-                            func_name = getattr(func_call, 'name', 'Unknown') if func_call else 'Unknown'
-                            func_args = getattr(func_call, 'args', {}) if func_call else {}
-                        #    logger.info(f"🔧 Function Call: {func_name} | Args: {str(func_args)[:100]}{'...' if len(str(func_args)) > 100 else ''}")
-                        elif hasattr(part, 'function_response'):
-                            func_resp = part.function_response
-                            func_name = getattr(func_resp, 'name', 'Unknown') if func_resp else 'Unknown'
-                            func_result = getattr(func_resp, 'response', getattr(func_resp, 'result', 'No result')) if func_resp else 'No result'
-                        #    logger.info(f"🔄 Function Response: {func_name} | Result: {str(func_result)[:100]}{'...' if len(str(func_result)) > 100 else ''}")
-                else:
-                    self.agent_logger.log_step("VeritasAgent", "📄 Event Content: ")
-            
-            await event_queue.enqueue_event(event)
-        
-        self.agent_logger.log_step("VeritasAgent", f"✅ VERITAS AGENT COMPLETED - Processed {event_count} events for session {session_id}")
+            # ... your existing logging ...
+            if getattr(event, "text", None):
+                self.agent_logger.log_step(event.author, "Text: " + event.text)
+                final_text = event.text
+            elif getattr(event, "content", None) and getattr(event.content, "parts", None):
+                texts = [getattr(p, "text", None) for p in event.content.parts if getattr(p, "text", None)]
+                if texts:
+                    final_text = texts[-1]
+                    self.agent_logger.log_step(event.author, "Text: " + final_text)
 
+            # ❌ remove this:
+            # await event_queue.enqueue_event(event)
+
+        # ✅ send a proper A2A agent message so the handler doesn’t 500:
+        await event_queue.enqueue_event(new_agent_text_message(final_text or "Done."))
+    
     @override
     async def cancel(self, context: RequestContext, event_queue: EventQueue) -> None:
         raise Exception("cancel not supported") 
