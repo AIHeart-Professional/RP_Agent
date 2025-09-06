@@ -43,21 +43,26 @@ class AgentExecutor(AgentExecutor):
 
     @override
     async def execute(self, context: RequestContext, event_queue: EventQueue) -> None:
-        # Extract message text
+        # Step 0: Initialize variables
         message_text = None
+        stream = False
+        user_id = ""
+        server_id = ""
+        
+        # Step 1: If there is a previous agent response.
         if hasattr(context.message, "parts") and context.message.parts:
+            # Step 1a: Extract message string from previous agent response
             message_text = "".join(
                 part.root.text for part in context.message.parts if hasattr(part, "root") and hasattr(part.root, "text")
             )
-
+        # Step 2: If there is no previous agent response.
         if not message_text:
             raise Exception("No message found in request context")
-
-        # Metadata (fall back if missing)
+        # Step 3: Extract user_id and server_id from request context
         user_id = context.metadata.get("user_id") if context.metadata else str(uuid.uuid4())
         server_id = context.metadata.get("server_id") if context.metadata else "default-server"
         
-        # Convert message to Content format and include context metadata
+        # Step 4: Convert message to string holding required fields and previous agent responses
         enhanced_message = f"""[CONTEXT]
             user_id: {user_id}
             server_id: {server_id}
@@ -65,7 +70,7 @@ class AgentExecutor(AgentExecutor):
             [USER REQUEST]
             {message_text}"""
 
-        # Always create a new session to avoid "Session not found" errors
+        # Step 5: Create a new session
         session = await self.agent.runner.session_service.create_session(
             app_name=self.agent.runner.app_name,
             user_id=user_id,
@@ -73,8 +78,7 @@ class AgentExecutor(AgentExecutor):
         session_id = session.id
         self.agent_logger.start_execution(user_id, session_id, enhanced_message)
 
-        # 🔑 Now run the agent within that session
-        # Convert message to Content format (same as agent.py invoke method)
+        # Step 6: Convert message to A2A format
         content = types.Content(
             role="user",
             parts=[types.Part.from_text(text=enhanced_message)],
@@ -82,25 +86,56 @@ class AgentExecutor(AgentExecutor):
         
         final_text = None
 
+        # Step 7: Run the agent and process events
         async for event in self.agent.runner.run_async(
             user_id=user_id,
             session_id=session_id,
             new_message=content,
         ):
-            # capture text from ADK events
+            # 7a: capture responses from ADK events
             if getattr(event, "text", None):
                 self.agent_logger.log_step(event.author, "Response: " + event.text)
                 final_text = event.text
+                
+                # Optional: Send intermediate streaming response
+                if stream:
+                    await event_queue.enqueue_event(
+                        new_agent_text_message(event.text)
+                    )
+                    
             elif getattr(event, "content", None) and getattr(event.content, "parts", None):
-                # pick the last non-empty text part as final
+                # 7b: Process all parts including function calls
+                for part in event.content.parts:
+                    if getattr(part, "text", None):
+                        final_text = part.text
+                        self.agent_logger.log_step(event.author, "Text: " + part.text)
+                        
+                        # Optional: Send intermediate streaming response
+                        if stream:
+                            await event_queue.enqueue_event(
+                                new_agent_text_message(part.text)
+                            )
+                    elif getattr(part, "function_call", None):
+                        # Log function call but don't try to execute it - ADK handles this
+                        func_call = part.function_call
+                        self.agent_logger.log_step(event.author, f"Function Call: {func_call.name}")
+                    elif getattr(part, "function_response", None):
+                        # Log function response
+                        func_response = part.function_response
+                        self.agent_logger.log_step(event.author, f"Function Response: {func_response.name}")
+                        
+                # Fallback: get text from all text parts
                 texts = [getattr(p, "text", None) for p in event.content.parts if getattr(p, "text", None)]
-                if texts:
-                    final_text = texts[-1]
-                    self.agent_logger.log_step(event.author, "Response: " + final_text)
+                if texts and not final_text:
+                    final_text = " ".join(texts)
+                    self.agent_logger.log_step(event.author, "Combined Text: " + final_text)
+            
+            # Check if this is the final response using ADK's built-in method
+            if hasattr(event, 'is_final_response') and event.is_final_response():
+                self.agent_logger.log_step("System", "Final response received")
+                break
 
-            # DO NOT enqueue raw ADK events to A2A; they’re not A2A events
-
-        # after the loop, send an actual A2A message event:
+        # Step 8: Enqueue final response
         await event_queue.enqueue_event(
             new_agent_text_message(final_text or "Done.")
         )

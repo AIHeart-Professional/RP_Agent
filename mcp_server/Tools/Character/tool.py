@@ -10,11 +10,7 @@ from config.logging_config import setup_logging
 setup_logging()
 logger = logging.getLogger(__name__)
 
-# MongoDB configuration
-MONGO_URI = "mongodb://localhost:27017/"
-DB_NAME = "Veritas"
-
-def create_character_tool(
+async def create_character_tool(
     server_id: str,
     player_id: str, 
     character_name: str,
@@ -109,9 +105,12 @@ def create_character_tool(
                 "left_hand": None,
                 "right_hand": None
             },
-            "group": {
-                "guild": None,
-                "party": None
+            "groups": {
+                "party_id": None,
+                "guild_id": None
+            },
+            "instances": {
+                "session_id": None
             },
             "stats": {
                 "hp": 100,
@@ -163,7 +162,7 @@ def create_character_tool(
         if client:
             client.close()
 
-def get_character_tool(
+async def get_character_tool(
     player_id: str,
     server_id: str,
     character_name: Optional[str],
@@ -252,7 +251,7 @@ def get_character_tool(
             client.close()
 
 
-def update_character_tool(
+async def update_character_tool(
     request: dict,
     character_data: Dict[str, Any]
 ) -> Dict[str, Any]:
@@ -415,7 +414,7 @@ def update_character_tool(
             client.close()
 
 
-def delete_character_tool(
+async def delete_character_tool(
     player_id: str,
     server_id: str,
     character_name: Optional[str],
@@ -467,7 +466,7 @@ def delete_character_tool(
                 
         # Delete the character
         result = characters_collection.delete_one(query)
-        logger.info("result: ", result)
+        logger.info(f"result: {result}")
         if result.deleted_count == 0:
             logger.info("Failed to delete character")
             return {
@@ -492,7 +491,7 @@ def delete_character_tool(
             client.close()
 
 
-def _has_active_character_assistant_function(player_id: str, server_id: str):
+async def _has_active_character_assistant_function(player_id: str, server_id: str):
     # Call the database to find if a players player_id and server_id have a character where active is true
     client = None
     try:

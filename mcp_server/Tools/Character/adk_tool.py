@@ -11,14 +11,14 @@ from .tool import (
     delete_character_tool as delete_character_function
 )
 
-def create_character_tool(
+async def create_character_tool(
     server_id: str,
     player_id: str, 
     character_name: str,
     character_class: str
 ) -> Dict[str, Any]:
     """Create a new character with required fields only."""
-    return create_character_function(
+    return await create_character_function(
         server_id=server_id,
         player_id=player_id,
         character_name=character_name,

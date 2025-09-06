@@ -32,6 +32,28 @@ inventory_skill = AgentSkill(
     "I want to equip a sword"],
 )
 
+combat_skill = AgentSkill(
+    id="combat_skill",
+    name="Combat Skill",
+    description="Handles combat-related tasks.",
+    tags=["combat", "attack", "defense", "heal", "run", "use", "skill"],
+    examples=["I want to attack the monster", 
+    "I want to battle the goblin", 
+    "I want to run away", 
+    "I want to use a potion", 
+    "use vorpal strike"],
+)
+
+session_skill = AgentSkill(
+    id="session_skill",
+    name="Session Skill",
+    description="Handles session-related tasks.",
+    tags=["session", "start", "create", "end", "finish"],
+    examples=["I want to start a battle", 
+    "I want to end a battle", 
+    "I want to use my blacksmithing skill"],
+)
+
 agent_card = AgentCard(
         id = "mechanics_agent",
         name="Mechanics",
@@ -41,7 +63,7 @@ agent_card = AgentCard(
         defaultInputModes=["text", "text/plain"],
         defaultOutputModes=["text", "text/plain"],
         capabilities = AgentCapabilities(streaming=True, pushNotifications=True),
-        skills=[character_skill, inventory_skill],
+        skills=[character_skill, inventory_skill, combat_skill, session_skill],
     )
 
 agent = agent_card
