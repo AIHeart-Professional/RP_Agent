@@ -16,7 +16,9 @@ from google.adk.agents import Agent
 from google.genai import types
 from sub_agents import (
     character_sub_agent,
-    combat_sub_agent
+    combat_sub_agent,
+    inventory_sub_agent,
+    item_sub_agent
 )
 
 logging.basicConfig(level=logging.INFO)
@@ -65,9 +67,9 @@ class MechanicsAgent:
             description="Agent designed as a parent agent whose purpose is to delegate tasks to other agents.",
             instruction="You are a mechanics agent that focuses on the logical application of user requests. You will always delegate requests to your sub-agents, never perform actions yourself.",
             output_key="mechanics",
-            sub_agents=[character_sub_agent, combat_sub_agent]
+            sub_agents=[character_sub_agent, combat_sub_agent, inventory_sub_agent, item_sub_agent]
         )
-        
+
         # Create session first
         self.session = InMemorySessionService()
         

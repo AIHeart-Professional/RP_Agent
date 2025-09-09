@@ -54,6 +54,16 @@ session_skill = AgentSkill(
     "I want to use my blacksmithing skill"],
 )
 
+item_skill = AgentSkill(
+    id="item_skill",
+    name="Item Skill",
+    description="Handles item-related tasks.",
+    tags=["item", "create", "update", "delete"],
+    examples=["I want to create a item named sword.",
+    "I want to update the item named sword.",
+    "I want to delete the item named sword."],
+)
+
 agent_card = AgentCard(
         id = "mechanics_agent",
         name="Mechanics",
@@ -63,7 +73,7 @@ agent_card = AgentCard(
         defaultInputModes=["text", "text/plain"],
         defaultOutputModes=["text", "text/plain"],
         capabilities = AgentCapabilities(streaming=True, pushNotifications=True),
-        skills=[character_skill, inventory_skill, combat_skill, session_skill],
+        skills=[character_skill, inventory_skill, combat_skill, session_skill, item_skill],
     )
 
 agent = agent_card
